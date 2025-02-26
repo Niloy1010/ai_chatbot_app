@@ -1,0 +1,76 @@
+/* styles/Login.module.css */
+.loginContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    background: linear-gradient(120deg, #fcd1dc 0%, #fde2b6 100%);
+  }
+  
+  .imageContainer {
+    margin-bottom: 40px;
+    animation: bounce 3s infinite;
+  }
+  
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-30px);
+    }
+    60% {
+      transform: translateY(-15px);
+    }
+  }
+  
+  .loginForm {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 300px;
+  }
+  
+  .loginForm h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #333;
+    font-weight: 700;
+  }
+  
+  .loginForm p {
+    margin-bottom: 20px;
+    color: #555;
+  }
+  
+  .loginForm input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    background: #fff8f2;
+  }
+  
+  .loginForm button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #ff7f8b;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .loginForm button:hover {
+    background: #ff6f7b;
+  }
+  

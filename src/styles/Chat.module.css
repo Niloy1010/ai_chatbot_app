@@ -1,0 +1,160 @@
+/* styles/Chat.module.css */
+
+/* Overall container with a whimsical pastel gradient */
+.chatPage {
+    display: flex;
+    height: 100vh;
+    background: linear-gradient(120deg, #dafaff 0%, #f3ffe2 100%);
+    font-family: 'Trebuchet MS', sans-serif;
+  }
+  
+  /* Left column with floating image & tone selector */
+  .leftColumn {
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    /* We’ll allow this to shrink in mobile view */
+    min-width: 200px;
+  }
+  
+  .imageContainer {
+    margin-bottom: 30px;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .floatingHead {
+    max-width: 400px;
+    border-radius: 50%;
+    background: #ff7f8b;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  /* Headings & text in left column */
+  .leftColumn h2 {
+    margin: 10px 0 5px;
+    color: #333;
+  }
+  .leftColumn p {
+    margin-bottom: 15px;
+    color: #555;
+  }
+  
+  /* The select dropdown for tones */
+  .toneSelect {
+    padding: 8px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background: #fff;
+    cursor: pointer;
+  }
+  .toneSelect:focus {
+    border: 1px solid #bbb;
+  }
+  
+  /* Right column with chat messages & input */
+  .rightColumn {
+    width: 67%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Messages container */
+  .messagesContainer {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 20px;
+    border-left: 1px solid #ccc;
+  }
+  
+  /* Common bubble styles */
+  .bubble {
+    max-width: 80%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    white-space: pre-wrap;
+    line-height: 2.5;
+  }
+  
+  /* User (right-aligned) bubble */
+  .bubbleUser {
+    background-color: #dcf8c6;
+    text-align: right;
+    align-self: flex-end;
+  }
+  
+  /* Bot (left-aligned) bubble */
+  .bubbleBot {
+    background-color: #f1f0f0;
+    text-align: left;
+    align-self: flex-start;
+  }
+  
+  /* Input area at the bottom */
+  .inputContainer {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    background: #fafafa;
+  }
+  
+  .chatInput {
+    flex-grow: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+  }
+  
+  .sendButton {
+    margin-left: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #ff7f8b;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .sendButton:hover {
+    background-color: #ff6f7b;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .chatPage {
+      flex-direction: column;
+    }
+    .leftColumn, .rightColumn {
+      width: 100%;
+      min-width: auto;
+      height: auto;
+    }
+    .messagesContainer {
+      border-left: none;
+      border-top: 1px solid #ccc;
+    }
+    .bubble {
+      max-width: 90%;
+    }
+  }
+  
