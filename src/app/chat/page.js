@@ -5,17 +5,14 @@ import { useRouter } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-
-/* Import the CSS module */
 import styles from '@/styles/Chat.module.css';
-// Adjust this path to match where Chat.module.css is located in your project
 
 export default function Chat() {
   const router = useRouter();
   const [username, setUsername] = useState('');
   const [inputMessage, setInputMessage] = useState('');
   const [chatHistory, setChatHistory] = useState([]);
-  const [chatTone, setChatTone] = useState('Random'); 
+  const [chatTone, setChatTone] = useState('Random');
   const chatEndRef = useRef(null);
   const selectedVoice = useRef(null);
 
@@ -33,7 +30,7 @@ export default function Chat() {
   }, [chatHistory]);
 
   function getRandomVoice(voices) {
-    const randomIndex = Math.floor(Math.random() * voices.length);
+    const randomIndex = Math.floor(Math.random() * 4);
     return voices[randomIndex];
   }
 
@@ -75,7 +72,8 @@ export default function Chat() {
           'Content-Type': 'application/json',
         },
         credentials: 'include',
-        body: JSON.stringify({ message: currentMessage, tone: chatTone }),
+        // Include username along with message and tone
+        body: JSON.stringify({ message: currentMessage, tone: chatTone, username: username }),
       });
       
       const data = await res.json();
@@ -88,14 +86,24 @@ export default function Chat() {
     }
   };
 
+  const handleLogout = () => {
+    sessionStorage.removeItem('username');
+    router.push('/login');
+  };
+
   return (
     <div className={styles.chatPage}>
-      {/* Left Column: Floating Mushroom Image & Tone Selector */}
+      <div className={styles.logoutContainer}>
+        <button className={styles.logoutButton} onClick={handleLogout}>
+          Log out as {username}
+        </button>
+      </div>
+
       <div className={styles.leftColumn}>
         <div className={styles.imageContainer}>
           <img
             className={styles.floatingHead}
-            src="/floating-head.png" 
+            src="/floating-head.png"
             alt="Floating Mushroom Chat"
           />
         </div>
@@ -110,10 +118,10 @@ export default function Chat() {
           <option value="Angry">Angry</option>
           <option value="Depressed">Depressed</option>
           <option value="Happy">Happy</option>
+          <option value="Sarcastic">Sarcastic</option>
         </select>
       </div>
 
-      {/* Right Column: Chat Area */}
       <div className={styles.rightColumn}>
         <div className={styles.messagesContainer}>
           {chatHistory.map((msg, index) => (
@@ -127,7 +135,6 @@ export default function Chat() {
                 children={msg.text}
                 components={{
                   p({ node, children }) {
-                    // If there's only one child and it's a code block, skip <p> wrapper
                     if (
                       children.length === 1 &&
                       children[0].props &&
@@ -162,7 +169,6 @@ export default function Chat() {
           <div ref={chatEndRef} />
         </div>
 
-        {/* Chat Input */}
         <div className={styles.inputContainer}>
           <input
             className={styles.chatInput}
