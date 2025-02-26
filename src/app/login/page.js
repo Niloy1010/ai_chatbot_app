@@ -48,7 +48,7 @@ export default function Login() {
     <div className={styles.loginContainer}>
       <div className={styles.imageContainer}>
         <Image
-          src="/favicon.png"
+          src="/logo.png"
           alt="Mushroom House"
           width={200}
           height={220}
