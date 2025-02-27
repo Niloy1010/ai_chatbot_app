@@ -44,6 +44,7 @@
 }
 
 .floatingHead {
+  margin-top: 50px;
   width: 200px;
   border-radius: 50%;
   background: #ff7f8b;
@@ -75,7 +76,6 @@
   border: none;
   border-radius: 5px;
   outline: none;
-  background: #fff;
   cursor: pointer;
 }
 

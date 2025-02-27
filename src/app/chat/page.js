@@ -176,6 +176,7 @@ export default function Chat() {
             placeholder="Type a message..."
             value={inputMessage}
             onChange={(e) => setInputMessage(e.target.value)}
+            style={{ color: inputMessage ? 'black' : 'gray' }}
             onKeyPress={(e) => {
               if (e.key === 'Enter') {
                 e.preventDefault();
