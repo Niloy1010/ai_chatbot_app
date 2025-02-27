@@ -15,6 +15,7 @@ export default function RootLayout({ children }) {
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
         <link rel="icon" href="/logo.png" />
+        <link rel="stylesheet" href="glonals.css" />
       </head>
       <body>{children}</body>
     </html>
